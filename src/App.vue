@@ -1,32 +1,67 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <router-view />
     </div>
-    <router-view />
-  </div>
 </template>
 
 <style lang="scss">
+@import "@/assets/scss/vars";
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: $text-color;
+}
+html {
+    line-height: 1.46;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
-#nav {
-  padding: 30px;
+body {
+    margin: 0;
+    cursor: default;
+    background: $primary-1;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
+p {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+dl,
+dd {
+    margin: 0;
+}
+
+h1 > small,
+h1 > time {
+    display: block;
+}
+:root {
+    font-size: 0.875rem;
+}
+@media (min-width: 24em) {
+    :root {
+        font-size: 0.9375rem;
     }
-  }
+}
+@media (min-width: 48em) {
+    :root {
+        font-size: 1rem;
+    }
 }
 </style>
