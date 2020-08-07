@@ -27,7 +27,8 @@ export const getters = {
         return Array.from(
             new Set(
                 state.transactions.map(transaction => {
-                    const transactionDate = new Date(transaction.created_at);
+                    const transactionDate = new Date(getIsoDate(transaction.created_at));
+                    console.log(transactionDate);
                     return convertDate(transactionDate);
                 })
             )
@@ -35,20 +36,21 @@ export const getters = {
     },
     getTransactionsByDate: state => date => {
         return state.transactions.filter(transaction => {
-            const transactionDate = new Date(transaction.created_at);
+            const transactionDate = new Date(getIsoDate(transaction.created_at));
             return convertDate(transactionDate) === date;
         });
     }
 };
 
 function convertDate(date) {
-    console.log(date);
     const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
     const monthNumber = date.getMonth() + 1;
     const month = monthNumber < 10 ? `0${monthNumber}` : monthNumber;
     return `${day}.${month}.${date.getFullYear()}`;
 }
-
+function getIsoDate(date) {
+    return `${date.substring(0, 23)}Z`;
+}
 // function getPrettyDate(date) {
 //     const today = new Date();
 //     const prettyToday = convertDate(new Date());

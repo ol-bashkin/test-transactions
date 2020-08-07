@@ -33,7 +33,7 @@ export default {
             return this.typesEnum[this.transaction.type];
         },
         getTransactionTime() {
-            const date = new Date(this.transaction.created_at);
+            const date = new Date(`${this.transaction.created_at.substring(0, 23)}Z`);
             return date.toLocaleTimeString().substring(0, 5);
         },
         summary() {
@@ -41,7 +41,7 @@ export default {
                 type: this.getTransactionType,
                 event: this.transaction.event_id,
                 time: this.getTransactionTime,
-                amount: this.transaction.amount.toLocaleString("ru"),
+                amount: this.transaction.amount.toLocaleString(),
                 positive: this.transaction.event_name === "REFUND",
                 account: this.transaction.account_number,
                 currency: this.transaction.currency,

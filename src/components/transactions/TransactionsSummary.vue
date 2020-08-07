@@ -42,6 +42,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/vars";
 .summary {
+    display: block;
     position: relative;
     padding: 0 0 0 50px;
     &::-webkit-details-marker {
