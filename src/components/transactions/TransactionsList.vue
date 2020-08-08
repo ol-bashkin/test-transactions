@@ -21,5 +21,8 @@ export default {
 
 <style lang="scss" scoped>
 .transactions {
+    display: block;
+    margin: 0;
+    list-style: none;
 }
 </style>

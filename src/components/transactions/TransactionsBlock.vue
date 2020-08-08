@@ -1,6 +1,6 @@
 <template>
     <div class="report">
-        <div v-for="date in getDates" :key="date">
+        <div v-for="date in getDates" :key="date" class="report__block">
             <p class="report__date">{{ date }}</p>
             <TransactionsList :transactions="getTransactionsByDate(date)" />
         </div>
@@ -25,10 +25,15 @@ export default {
 .report {
     padding: 40px 0;
     &__date {
-        margin: 0 0 15px;
+        margin: 0 0 10px;
         padding: 0 10px;
         text-align: left;
         color: $primary-3;
+    }
+    &__block {
+        &:not(:last-child) {
+            margin: 0 0 20px;
+        }
     }
 }
 </style>

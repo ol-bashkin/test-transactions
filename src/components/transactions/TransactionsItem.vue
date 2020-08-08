@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { getIsoDate } from "@/helpers/dateHelpers.js";
 import TransactionsSummary from "./TransactionsSummary.vue";
 export default {
     components: {
@@ -21,7 +22,7 @@ export default {
     },
     data() {
         return {
-            typesEnum: {
+            transactionsTypes: {
                 PURCHASE: "Покупка",
                 PURCHASE_BILL: "Счёт",
                 REFUND: "Возврат"
@@ -30,10 +31,10 @@ export default {
     },
     computed: {
         getTransactionType() {
-            return this.typesEnum[this.transaction.type];
+            return this.transactionsTypes[this.transaction.type];
         },
         getTransactionTime() {
-            const date = new Date(`${this.transaction.created_at.substring(0, 23)}Z`);
+            const date = new Date(getIsoDate(this.transaction.created_at));
             return date.toLocaleTimeString().substring(0, 5);
         },
         summary() {
